@@ -3,6 +3,7 @@ import s from './Home.module.scss';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import Layout from '../../components/Layout';
+import Parallax from "../../components/Parallax";
 
 const HomePage = () => {
   return (
@@ -16,7 +17,7 @@ const HomePage = () => {
             <p>You can know the type of Pokemon, its strengths, disadvantages and abilities</p>
             <Button onClick={() => console.log("Click Button!")}>See pokemons</Button>
         </div>
-        <div>We will seen parallax here soon</div>
+        <Parallax />
       </Layout>
     </div>
   );
