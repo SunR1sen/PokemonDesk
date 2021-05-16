@@ -88,7 +88,7 @@
 
 /***/ "./node_modules/object-assign/index.js":
 /*!*********************************************!*\
-  !*** ./node_modules/object-assign/index.js ***!
+  !*** ./node_modules/object-assign/index.ts ***!
   \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -22283,7 +22283,7 @@ if (true) {
 
 /***/ "./node_modules/react-dom/index.js":
 /*!*****************************************!*\
-  !*** ./node_modules/react-dom/index.js ***!
+  !*** ./node_modules/react-dom/index.ts ***!
   \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -24313,7 +24313,7 @@ if (true) {
 
 /***/ "./node_modules/react/index.js":
 /*!*************************************!*\
-  !*** ./node_modules/react/index.js ***!
+  !*** ./node_modules/react/index.ts ***!
   \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -25222,7 +25222,7 @@ if (true) {
 
 /***/ "./node_modules/scheduler/index.js":
 /*!*****************************************!*\
-  !*** ./node_modules/scheduler/index.js ***!
+  !*** ./node_modules/scheduler/index.ts ***!
   \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -25256,7 +25256,7 @@ else {
 
 /***/ "./src/App.js":
 /*!********************!*\
-  !*** ./src/App.js ***!
+  !*** ./src/App.tsx ***!
   \********************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -25278,7 +25278,7 @@ exports.default = App;
 
 /***/ "./src/index.js":
 /*!**********************!*\
-  !*** ./src/index.js ***!
+  !*** ./src/index.ts ***!
   \**********************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
