@@ -1,4 +1,6 @@
 import React from 'react';
+import { A, usePath } from 'hookrouter';
+import cn from 'classnames';
 import s from './Header.module.scss';
 import {ReactComponent as PokemonLogoSvg} from './assets/pokemonLogo.svg';
 
@@ -41,9 +43,9 @@ const Header = () => {
         <div className={s.menuWrap}>
           {MENU.map(({ id, value, link }) => {
             return (
-              <a key={id} href={link} className={s.menuLink}>
-                {value}
-              </a>
+              <A key={title} href={link} className={cn(s.menuLink, { [s.activeLink]: link === path })}>
+                {title}
+              </A>
             );
           })}
         </div>
