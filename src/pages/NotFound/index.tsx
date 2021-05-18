@@ -4,6 +4,7 @@ import s from './NotFound.module.scss';
 import image404 from './assets/404.png';
 import rocketTeamImg from './assets/teamRocket.png';
 import Button, { ButtonColors } from '../../components/Button';
+import { LinkEnum } from '../../routes';
 
 const NotFoundPage = () => {
   return (
@@ -15,7 +16,7 @@ const NotFoundPage = () => {
       <div className={s.title}>
         <span className={s.lightText}>The rocket team</span> has won this time.
       </div>
-      <Button color={ButtonColors.yellow} onClick={() => navigate('/')}>
+      <Button color={ButtonColors.yellow} onClick={() => navigate(LinkEnum.HOME)}>
         Return
       </Button>
     </div>

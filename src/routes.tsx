@@ -1,6 +1,7 @@
 import React from 'react';
 import HomePage from './pages/Home';
 import EmptyPage from './pages/Empty';
+import Pokedex from "./pages/Pokedex";
 
 interface IGeneralMenuItem {
   title: string;
@@ -8,26 +9,33 @@ interface IGeneralMenuItem {
   component: () => JSX.Element;
 }
 
+export enum LinkEnum {
+  HOME = '/',
+  POKEDEX = '/pokedex',
+  LEGENDARIES = '/legendaries',
+  DOCUMENTATION = '/documentation',
+}
+
 export const GENERAL_MENU: IGeneralMenuItem[] = [
   {
     title: 'Home',
-    link: '/',
-    component: () => <HomePage />
+    link: LinkEnum.HOME,
+    component: () => <HomePage />,
   },
   {
     title: 'Pokédex',
-    link: '/pokedex',
-    component: () => <EmptyPage title='Pokédex' />
+    link: LinkEnum.POKEDEX,
+    component: () => <Pokedex />,
   },
   {
     title: 'Legendaries',
-    link: '/legendaries',
-    component: () => <EmptyPage title='Legendaries' />
+    link: LinkEnum.LEGENDARIES,
+    component: () => <EmptyPage title="Legendaries" />,
   },
   {
     title: 'Documentation',
-    link: '/documentation',
-    component: () => <EmptyPage title='Documentation' />
+    link: LinkEnum.DOCUMENTATION,
+    component: () => <EmptyPage title="Documentation" />,
   },
 ];
 
@@ -38,6 +46,6 @@ interface IAccMenu {
 const routes = GENERAL_MENU.reduce((acc: IAccMenu, item: IGeneralMenuItem) => {
   acc[item.link] = item.component;
   return acc;
-}, {})
+}, {});
 
 export default routes;
