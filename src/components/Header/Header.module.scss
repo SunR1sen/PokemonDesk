@@ -5,6 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: $third;
+  box-shadow: 0 4px 16px rgba(1, 28, 64, 0.2);
 }
 
 .wrap {
@@ -58,5 +60,12 @@
       width: 100%;
       opacity: 1;
     }
+  }
+}
+
+.activeLink {
+  &:after {
+    width: 100%;
+    opacity: 1;
   }
 }
