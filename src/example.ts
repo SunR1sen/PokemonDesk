@@ -11,10 +11,7 @@ type ArrayOfStringAndNumber = Array<string | number>;
 interface IMyHomeTask {
   howIDoIt: string;
   someArray: ArrayOfStringAndNumber;
-  withData: Array<{
-    howIDoIt: string;
-    someArray: ArrayOfStringAndNumber;
-  }>;
+  withData?: IMyHomeTask[];
 }
 
 const myHometask: IMyHomeTask = {
