@@ -2,11 +2,25 @@ import React from 'react';
 import Header from '../../components/Header';
 import PokemonCard from '../../components/PokemonCard';
 
+import s from './Pokedex.module.scss';
+import Layout from '../../components/Layout';
+import pokemonsMock from './pokemonsMock';
+
 const Pokedex = () => {
   return (
     <>
       <Header />
-      <PokemonCard />
+      <Layout className={s.cardsWrap}>
+        {pokemonsMock.map((poke) => (
+          <PokemonCard
+            name={poke.name}
+            attack={poke.stats.attack}
+            defense={poke.stats.defense}
+            types={poke.types}
+            imageSrc={poke.img}
+          />
+        ))}
+      </Layout>
     </>
   );
 };
