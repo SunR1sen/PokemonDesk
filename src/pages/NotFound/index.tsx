@@ -1,4 +1,5 @@
 import React from 'react';
+import { navigate } from 'hookrouter';
 import s from './NotFound.module.scss';
 import image404 from './assets/404.png';
 import rocketTeamImg from './assets/teamRocket.png';
@@ -14,7 +15,7 @@ const NotFoundPage = () => {
       <div className={s.title}>
         <span className={s.lightText}>The rocket team</span> has won this time.
       </div>
-      <Button color={ButtonColors.yellow} onClick={() => console.log('RETURN CLICK')}>
+      <Button color={ButtonColors.yellow} onClick={() => navigate('/')}>
         Return
       </Button>
     </div>
