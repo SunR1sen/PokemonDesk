@@ -13,10 +13,11 @@ export const HeadingTypes = {
 
 interface HeadingProps {
   type: string;
+  className?: string;
 }
 
-const Heading: React.FC<HeadingProps> = ({ type, children }) => {
-  return React.createElement(type, null, children);
+const Heading: React.FC<HeadingProps> = ({ type, className, children }) => {
+  return React.createElement(type, className, children);
 };
 
 export default Heading;
