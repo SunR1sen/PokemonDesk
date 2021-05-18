@@ -11,7 +11,9 @@ const NotFoundPage = () => {
         <img className={s.image} src={image404} alt="404" />
         <img className={s.image} src={rocketTeamImg} alt="Rocket Team" />
       </div>
-      <div className={s.title}>The rocket team has won this time.</div>
+      <div className={s.title}>
+        <span className={s.lightText}>The rocket team</span> has won this time.
+      </div>
       <Button color={ButtonColors.yellow} onClick={() => console.log('RETURN CLICK')}>
         Return
       </Button>
