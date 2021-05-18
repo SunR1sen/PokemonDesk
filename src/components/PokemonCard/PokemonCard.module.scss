@@ -1,6 +1,8 @@
+@import "../../variables";
+
 .root {
   width: 351px;
-  height: 136px;
+  height: 155px;
   box-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
   background: #F6F7F9;
   border-radius: 8px;
@@ -8,6 +10,8 @@
   position: relative;
   margin-bottom: 45px;
   cursor: pointer;
+  align-self: center;
+  justify-self: center;
   transition: all ease-in-out .15s;
 
   &:hover {
@@ -107,4 +111,20 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.fire {
+  background: $fire;
+}
+
+.poison, .flying {
+  background: $poison;
+}
+
+.grass, .bug {
+  background: $grass;
+}
+
+.water {
+  background: $water;
 }
