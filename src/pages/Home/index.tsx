@@ -7,6 +7,7 @@ import Layout from '../../components/Layout';
 import Parallax from '../../components/Parallax';
 import Heading, { HeadingTypes } from '../../components/Heading';
 import { LinkEnum } from '../../routes';
+import Footer from "../../components/Footer";
 
 const HomePage = () => {
   return (
@@ -24,6 +25,7 @@ const HomePage = () => {
         </div>
         <Parallax />
       </Layout>
+      <Footer />
     </div>
   );
 };
