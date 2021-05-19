@@ -16,7 +16,7 @@ interface HeadingProps {
 }
 
 const Heading: React.FC<HeadingProps> = ({ type, className, children }) => {
-  return React.createElement(type, className, children);
+  return React.createElement(type, { className }, children);
 };
 
 export default Heading;
