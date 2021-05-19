@@ -5,6 +5,7 @@ import PokemonCard from '../../components/PokemonCard';
 import s from './Pokedex.module.scss';
 import Layout from '../../components/Layout';
 import pokemonsMock from './pokemonsMock';
+import Footer from '../../components/Footer';
 
 const Pokedex = () => {
   return (
@@ -21,6 +22,7 @@ const Pokedex = () => {
           />
         ))}
       </Layout>
+      <Footer />
     </>
   );
 };
