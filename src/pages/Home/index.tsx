@@ -14,10 +14,12 @@ const HomePage = () => {
       <Header />
       <Layout className={s.contentWrap}>
         <div className={s.contentText}>
-          <Heading type={HeadingTypes.h1}>
+          <Heading className={s.title} type={HeadingTypes.h1}>
             <b>Find</b> all your favorite <b>Pokemons</b>
           </Heading>
-          <p>You can know the type of Pokemon, its strengths, disadvantages and abilities</p>
+          <Heading type={HeadingTypes.h3} className={s.subtitle}>
+            You can know the type of Pokemon, its strengths, disadvantages and abilities
+          </Heading>
           <Button onClick={() => navigate(LinkEnum.POKEDEX)}>See pokemons</Button>
         </div>
         <Parallax />
