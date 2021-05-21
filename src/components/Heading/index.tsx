@@ -1,22 +1,22 @@
 import React from 'react';
 
-
-export const HeadingTypes = {
-  h1: 'h1',
-  h2: 'h2',
-  h3: 'h3',
-  h4: 'h4',
-  h5: 'h5',
-  h6: 'h6',
-  Paragraph: 'p',
-};
+export enum HeadingTypes {
+  h1 = 'h1',
+  h2 = 'h2',
+  h3 = 'h3',
+  h4 = 'h4',
+  h5 = 'h5',
+  h6 = 'h6',
+  Paragraph = 'p',
+}
 
 interface HeadingProps {
   type: string;
+  className?: string;
 }
 
-const Heading: React.FC<HeadingProps> = ({ type, children }) => {
-  return React.createElement(type, null, children);
+const Heading: React.FC<HeadingProps> = ({ type, className, children }) => {
+  return React.createElement(type, { className }, children);
 };
 
 export default Heading;

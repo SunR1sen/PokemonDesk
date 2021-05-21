@@ -1,0 +1,40 @@
+@import '../../variables';
+
+.root {
+  padding-bottom: 20px;
+  background-color: $danger;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.images {
+  position: relative;
+  min-height: 670px;
+}
+
+.image {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.title {
+  margin-top: 75px;
+  margin-bottom: 62px;
+  text-align: center;
+
+  font-family: Karla, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+.lightText {
+  color: $white;
+}
+

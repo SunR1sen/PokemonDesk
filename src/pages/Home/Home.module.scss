@@ -7,13 +7,26 @@
 
 .contentWrap {
   display: flex;
-  //justify-content: space-between;
-  align-items: center;
-  align-content: center;
+  align-items: flex-start;
 }
 
 .contentText {
   display: flex;
+  max-width: 506px;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.title {
+  margin-top: 20px;
+  margin-bottom: 32px;
+  font-size: 72px;
+  font-weight: 400;
+}
+
+.subtitle {
+  margin-bottom: 48px;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 42px;
 }
