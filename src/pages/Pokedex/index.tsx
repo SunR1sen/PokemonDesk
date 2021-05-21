@@ -7,7 +7,7 @@ import Layout from '../../components/Layout';
 import pokemonsMock from './pokemonsMock';
 import Footer from '../../components/Footer';
 
-const Pokedex = () => {
+const Pokedex: React.FC = () => {
   return (
     <>
       <Header />
@@ -15,10 +15,11 @@ const Pokedex = () => {
         {pokemonsMock.map((poke) => (
           <PokemonCard
             name={poke.name}
-            attack={poke.stats.attack}
+            attack={Number(poke.stats.attack)}
             defense={poke.stats.defense}
             types={poke.types}
             imageSrc={poke.img}
+            key={poke.id}
           />
         ))}
       </Layout>
