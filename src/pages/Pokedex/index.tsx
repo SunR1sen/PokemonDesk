@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../../components/Header';
 import PokemonCard from '../../components/PokemonCard';
 
 import s from './Pokedex.module.scss';
@@ -10,7 +9,6 @@ import Footer from '../../components/Footer';
 const Pokedex: React.FC = () => {
   return (
     <>
-      <Header />
       <Layout className={s.cardsWrap}>
         {pokemonsMock.map((poke) => (
           <PokemonCard
