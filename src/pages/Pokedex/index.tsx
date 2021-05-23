@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import PokemonCard, {IPokemon} from '../../components/PokemonCard';
+import PokemonCard, { IPokemon } from '../../components/PokemonCard';
 
 import s from './Pokedex.module.scss';
 import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
 import Heading, { HeadingTypes } from '../../components/Heading';
+import req from '../../utils/request';
 
 type DataType = {
   total: number;
   limit: number;
   offset: number;
-  pokemons: Array<IPokemon>
-}
+  pokemons: Array<IPokemon>;
+};
 
 const usePokemons = () => {
   const [data, setData] = useState<DataType>();
@@ -21,10 +22,7 @@ const usePokemons = () => {
   useEffect(() => {
     const getPokemons = async () => {
       try {
-        const response = await fetch('https://zar.hosthot.ru/api/v1/pokemons');
-        const result = await response.json();
-
-        setData(result);
+        req('getPokemons').then((result) => setData(result));
       } catch (e) {
         setIsError(true);
       } finally {
@@ -46,11 +44,11 @@ const Pokedex: React.FC = () => {
   const { data, isLoading, isError } = usePokemons();
 
   if (isLoading) {
-    return <div>Loading......</div>
+    return <div>Loading......</div>;
   }
 
   if (isError) {
-    return <div>!!!SOMETHING GONE WRONG!!!</div>
+    return <div>!!!SOMETHING GONE WRONG!!!</div>;
   }
 
   return (
