@@ -1,7 +1,7 @@
 @import "../../variables";
 
 .root {
-  height: 93px;
+  height: #{$headerSize};
   display: flex;
   justify-content: center;
   align-items: center;
