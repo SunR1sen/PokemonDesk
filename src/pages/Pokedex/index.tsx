@@ -27,8 +27,8 @@ const Pokedex: React.FC = () => {
           />
         ))}
       </Layout>
-      <Footer />
-    </>
+      <Footer className={s.footer} />
+    </div>
   );
 };
 
