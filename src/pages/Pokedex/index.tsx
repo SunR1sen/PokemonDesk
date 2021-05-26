@@ -37,8 +37,8 @@ const Pokedex: React.FC = () => {
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
-    setQuery((s) => ({
-        ...s,
+    setQuery((state) => ({
+        ...state,
         name: e.target.value,
     }))
   };
@@ -46,7 +46,7 @@ const Pokedex: React.FC = () => {
   return (
     <div className={s.root}>
       <Heading className={s.title} type={HeadingTypes.h2}>
-        {data?.total} <b>Pokemons</b> to you for choosing your favorite!
+        {!isLoading && data?.total} <b>Pokemons</b> to you for choosing your favorite!
       </Heading>
       <input value={searchValue} onChange={handleSearchInput} />
 
