@@ -49,7 +49,7 @@ const Pokedex: React.FC = () => {
       <Heading className={s.title} type={HeadingTypes.h2}>
         {!isLoading && data?.total} <b>Pokemons</b> to you for choosing your favorite!
       </Heading>
-      <input value={searchValue} onChange={handleSearchInput} />
+      <input placeholder="Начните вводить имя покемона..." className={s.searchInput} value={searchValue} onChange={handleSearchInput} />
 
       <Layout className={s.cardsWrap}>
         {data?.pokemons.map((poke: IPokemon) => (
