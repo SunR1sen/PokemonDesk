@@ -4,8 +4,8 @@ import {Endpoints} from "../config";
 
 const useData  = <T, > (endpoint: Endpoints, query: object, deps: any[] = []) => {
     const [data, setData] = useState<T | null>();
-    const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState(false);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [isError, setIsError] = useState<boolean>(false);
 
     useEffect(() => {
         const getPokemons = async () => {
