@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from "classnames";
+import { A } from 'hookrouter';
 import Heading, { HeadingTypes } from '../Heading';
 
 import s from './PokemonCard.module.scss';
@@ -9,7 +10,7 @@ export interface IPokemon {
   stats: { [key: string]: number };
   types: Array<string>;
   img: string;
-  id?: number;
+  id: number;
 }
 
 enum PokemonElements {
@@ -21,7 +22,7 @@ enum PokemonElements {
   bug = "bug"
 }
 
-const PokemonCard: React.FC<IPokemon> = ({ stats, name, types, img : imageSrc }) => {
+const PokemonCard: React.FC<IPokemon> = ({ stats, name, types, img : imageSrc, id }) => {
   const selectImageBg = (type: string) => {
     switch (type) {
       case PokemonElements.grass:
@@ -39,34 +40,37 @@ const PokemonCard: React.FC<IPokemon> = ({ stats, name, types, img : imageSrc })
   }
 
   return (
-    <div className={s.root}>
-      <div className={s.infoWrap}>
-        <Heading type={HeadingTypes.Paragraph} className={s.titleName}>
-          {name}
-        </Heading>
-        <div className={s.statWrap}>
-          <div className={s.statItem}>
-            <div className={s.statValue}>{stats.attack}</div>
-            Attack
+      <A href={`pokedex/${id}`}>
+        <div className={s.root}>
+          <div className={s.infoWrap}>
+            <Heading type={HeadingTypes.Paragraph} className={s.titleName}>
+              {name}
+            </Heading>
+            <div className={s.statWrap}>
+              <div className={s.statItem}>
+                <div className={s.statValue}>{stats.attack}</div>
+                Attack
+              </div>
+              <div className={s.statItem}>
+                <div className={s.statValue}>{stats.defense}</div>
+                Defense
+              </div>
+            </div>
+            <div className={s.labelWrap}>
+              {types.map((type) => (
+                  <span key={type} className={cn(s.label, s[type as keyof typeof s])}>{type}</span>
+              ))}
+            </div>
           </div>
-          <div className={s.statItem}>
-            <div className={s.statValue}>{stats.defense}</div>
-            Defense
+          <div className={cn(s.pictureWrap, selectImageBg(types[0]))}>
+            <img
+                src={imageSrc}
+                alt={name}
+            />
           </div>
         </div>
-        <div className={s.labelWrap}>
-          {types.map((type) => (
-            <span key={type} className={cn(s.label, s[type as keyof typeof s])}>{type}</span>
-          ))}
-        </div>
-      </div>
-      <div className={cn(s.pictureWrap, selectImageBg(types[0]))}>
-        <img
-          src={imageSrc}
-          alt={name}
-        />
-      </div>
-    </div>
+
+      </A>
   );
 };
 
