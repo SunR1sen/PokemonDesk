@@ -66,12 +66,13 @@ module.exports = {
       {
         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
         use: ['url-loader'],
-      }
+      },
     ],
   },
   plugins: [
     new HTMLWebpackPlugins({
       template: path.resolve(__dirname, 'public/index.html'),
+      favicon: './src/favicon.ico',
     }),
   ],
   devServer: {
