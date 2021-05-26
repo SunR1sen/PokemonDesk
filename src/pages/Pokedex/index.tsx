@@ -6,6 +6,7 @@ import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
 import Heading, { HeadingTypes } from '../../components/Heading';
 import req from '../../utils/request';
+import { Endpoints } from '../../config';
 
 type DataType = {
   total: number;
@@ -22,7 +23,7 @@ const usePokemons = () => {
   useEffect(() => {
     const getPokemons = async () => {
       try {
-        req('getPokemons').then((result) => setData(result));
+        req(Endpoints.GetPokemons).then((result) => setData(result));
       } catch (e) {
         setIsError(true);
       } finally {
