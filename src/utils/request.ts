@@ -1,11 +1,11 @@
 import Url from 'url';
-import getUrlWithParamsConfig from "./getUrlWithParamsConfig";
-import config from "../config";
+import getUrlWithParamsConfig from './getUrlWithParamsConfig';
+import { Endpoints } from '../config';
 
-async function req(endPointConfig: keyof typeof config.client.endpoint) {
-    const uri = Url.format(getUrlWithParamsConfig(endPointConfig));
+async function req(endPointConfig: Endpoints) {
+  const uri = Url.format(getUrlWithParamsConfig(endPointConfig));
 
-    return await fetch(uri).then(res => res.json())
+  return await fetch(uri).then((res) => res.json());
 }
 
 export default req;
