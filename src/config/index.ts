@@ -15,4 +15,8 @@ const config = {
   },
 };
 
+export enum Endpoints {
+  GetPokemons = "getPokemons"
+}
+
 export default config;
