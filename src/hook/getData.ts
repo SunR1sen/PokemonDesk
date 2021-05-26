@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import req from "../utils/request";
 import {Endpoints} from "../config";
 
-const useData  = <T, > (endpoint: Endpoints, query: object, deps: any[] = []) => {
+const useData  = <T, > (endpoint: Endpoints, query: object, deps: any[] = [], params?: any) => {
     const [data, setData] = useState<T | null>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isError, setIsError] = useState<boolean>(false);
@@ -10,7 +10,7 @@ const useData  = <T, > (endpoint: Endpoints, query: object, deps: any[] = []) =>
     useEffect(() => {
         const getPokemons = async () => {
             try {
-                await req(endpoint, query).then((result) => setData(result));
+                await req(endpoint, query, params).then((result) => setData(result));
             } catch (e) {
                 setIsError(true);
             } finally {
