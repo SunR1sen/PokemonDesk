@@ -29,10 +29,6 @@ const Pokedex: React.FC = () => {
 
   const { data, isLoading, isError }: UseDataTypes = useData(Endpoints.GetPokemons, query, [debouncedValue]);
 
-  if (isLoading) {
-    return <div>Loading......</div>;
-  }
-
   if (isError) {
     return <div>!!!SOMETHING GONE WRONG!!!</div>;
   }
@@ -45,6 +41,7 @@ const Pokedex: React.FC = () => {
     }));
   };
 
+  // TODO: сделать нормальный лоадер
   return (
     <div className={s.root}>
       <Heading className={s.title} type={HeadingTypes.h2}>
