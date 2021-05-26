@@ -19,7 +19,8 @@ const useData  = <T, > (endpoint: Endpoints, query: object, deps: any[] = []) =>
         };
 
         getPokemons().then();
-    }, [endpoint]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [endpoint, ...deps]);
 
     return {
         data,
