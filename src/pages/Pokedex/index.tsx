@@ -1,48 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PokemonCard, { IPokemon } from '../../components/PokemonCard';
 
 import s from './Pokedex.module.scss';
 import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
 import Heading, { HeadingTypes } from '../../components/Heading';
-import req from '../../utils/request';
 import { Endpoints } from '../../config';
+import useData from '../../hook/useData';
 
-type DataType = {
+export type DataType = {
   total: number;
   limit: number;
   offset: number;
   pokemons: Array<IPokemon>;
 };
 
-const usePokemons = () => {
-  const [data, setData] = useState<DataType>();
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    const getPokemons = async () => {
-      try {
-        req(Endpoints.GetPokemons).then((result) => setData(result));
-      } catch (e) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    getPokemons().then();
-  }, []);
-
-  return {
-    data,
-    isLoading,
-    isError,
-  };
+type UseDataTypes = {
+  data?: DataType | null;
+  isLoading: boolean;
+  isError: boolean;
 };
 
 const Pokedex: React.FC = () => {
-  const { data, isLoading, isError } = usePokemons();
+  const { data, isLoading, isError }: UseDataTypes = useData(Endpoints.GetPokemons);
 
   if (isLoading) {
     return <div>Loading......</div>;
