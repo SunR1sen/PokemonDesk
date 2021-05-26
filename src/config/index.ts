@@ -23,7 +23,7 @@ const config = {
 
 export enum Endpoints {
   GetPokemons = 'getPokemons',
-  GetPokemonById = 'getPokemon',
+  GetPokemonById = 'getPokemonById',
 }
 
 export default config;
