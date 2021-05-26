@@ -51,7 +51,14 @@ const Pokedex: React.FC = () => {
 
       <Layout className={s.cardsWrap}>
         {data?.pokemons.map((poke: IPokemon) => (
-          <PokemonCard name={poke.name} stats={poke.stats} types={poke.types} img={poke.img} id={poke.id} key={poke.id} />
+          <PokemonCard
+            name={poke.name}
+            stats={poke.stats}
+            types={poke.types}
+            img={poke.img}
+            id={poke.id}
+            key={poke.id}
+          />
         ))}
       </Layout>
       <Footer className={s.footer} />
