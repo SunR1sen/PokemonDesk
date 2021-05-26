@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PokemonCard, { IPokemon } from '../../components/PokemonCard';
 
 import s from './Pokedex.module.scss';
@@ -22,7 +22,10 @@ type UseDataTypes = {
 };
 
 const Pokedex: React.FC = () => {
-  const { data, isLoading, isError }: UseDataTypes = useData(Endpoints.GetPokemons);
+  const [searchValue, setSearchValue] = useState('');
+  const [query, setQuery] = useState({});
+
+  const { data, isLoading, isError }: UseDataTypes = useData(Endpoints.GetPokemons, query, [searchValue]);
 
   if (isLoading) {
     return <div>Loading......</div>;
@@ -32,11 +35,21 @@ const Pokedex: React.FC = () => {
     return <div>!!!SOMETHING GONE WRONG!!!</div>;
   }
 
+  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+    setQuery((s) => ({
+        ...s,
+        name: e.target.value,
+    }))
+  };
+
   return (
     <div className={s.root}>
       <Heading className={s.title} type={HeadingTypes.h2}>
         {data?.total} <b>Pokemons</b> to you for choosing your favorite!
       </Heading>
+      <input value={searchValue} onChange={handleSearchInput} />
+
       <Layout className={s.cardsWrap}>
         {data?.pokemons.map((poke: IPokemon) => (
           <PokemonCard name={poke.name} stats={poke.stats} types={poke.types} img={poke.img} key={poke.id} />
