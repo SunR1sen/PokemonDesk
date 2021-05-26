@@ -4,6 +4,7 @@ import { A } from 'hookrouter';
 import Heading, { HeadingTypes } from '../Heading';
 
 import s from './PokemonCard.module.scss';
+import {LinkEnum} from "../../routes";
 
 export interface IPokemon {
   name: string;
@@ -40,7 +41,7 @@ const PokemonCard: React.FC<IPokemon> = ({ stats, name, types, img : imageSrc, i
   }
 
   return (
-      <A href={`pokedex/${id}`}>
+      <A href={`${LinkEnum.POKEDEX}/${id}`}>
         <div className={s.root}>
           <div className={s.infoWrap}>
             <Heading type={HeadingTypes.Paragraph} className={s.titleName}>

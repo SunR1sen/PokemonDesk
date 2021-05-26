@@ -44,7 +44,7 @@ export const GENERAL_MENU: IGeneralMenuItem[] = [
 const SECOND_ROUTES: IGeneralMenuItem[] = [{
   title: 'Pokemon',
   link: LinkEnum.POKEMON,
-  component: ({id}: PokemonProps) => <Pokemon id={id} />
+  component: ({id, name }: PokemonProps) => <Pokemon id={id} name={name} />
 }]
 
 interface IAccMenu {
