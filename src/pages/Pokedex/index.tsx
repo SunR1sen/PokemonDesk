@@ -6,7 +6,8 @@ import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
 import Heading, { HeadingTypes } from '../../components/Heading';
 import { Endpoints } from '../../config';
-import useData from '../../hook/useData';
+import useData from '../../hook/getData';
+import useDebounce from '../../hook/useDebounce';
 
 export type DataType = {
   total: number;
@@ -24,8 +25,9 @@ type UseDataTypes = {
 const Pokedex: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const [query, setQuery] = useState({});
+  const debouncedValue = useDebounce(searchValue, 1000);
 
-  const { data, isLoading, isError }: UseDataTypes = useData(Endpoints.GetPokemons, query, [searchValue]);
+  const { data, isLoading, isError }: UseDataTypes = useData(Endpoints.GetPokemons, query, [debouncedValue]);
 
   if (isLoading) {
     return <div>Loading......</div>;
@@ -38,9 +40,9 @@ const Pokedex: React.FC = () => {
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
     setQuery((state) => ({
-        ...state,
-        name: e.target.value,
-    }))
+      ...state,
+      name: e.target.value,
+    }));
   };
 
   return (
