@@ -27,7 +27,7 @@ const Pokedex: React.FC = () => {
   const [query, setQuery] = useState({
     limit: 9,
   });
-  const debouncedValue = useDebounce(searchValue, 1000);
+  const debouncedValue = useDebounce(searchValue, 500);
 
   const { data, isLoading, isError }: UseDataTypes = useData(Endpoints.GetPokemons, query, [debouncedValue]);
 
