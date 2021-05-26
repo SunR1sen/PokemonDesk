@@ -1,7 +1,7 @@
-@import "src/variables";
+@import "../../variables";
 
 .root {
-  min-height: 100vh;
+  min-height: calc(100vh - #{$headerSize});
   background: linear-gradient(180deg, $third 0%, $primary 100%);
 }
 

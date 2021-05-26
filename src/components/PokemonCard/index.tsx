@@ -4,12 +4,12 @@ import Heading, { HeadingTypes } from '../Heading';
 
 import s from './PokemonCard.module.scss';
 
-interface PokemonProp {
+export interface IPokemon {
   name: string;
-  attack: number;
-  defense: number;
+  stats: { [key: string]: number };
   types: Array<string>;
-  imageSrc: string;
+  img: string;
+  id?: number;
 }
 
 enum PokemonElements {
@@ -21,7 +21,7 @@ enum PokemonElements {
   bug = "bug"
 }
 
-const PokemonCard: React.FC<PokemonProp> = ({ attack, defense, name, types, imageSrc }) => {
+const PokemonCard: React.FC<IPokemon> = ({ stats, name, types, img : imageSrc }) => {
   const selectImageBg = (type: string) => {
     switch (type) {
       case PokemonElements.grass:
@@ -46,11 +46,11 @@ const PokemonCard: React.FC<PokemonProp> = ({ attack, defense, name, types, imag
         </Heading>
         <div className={s.statWrap}>
           <div className={s.statItem}>
-            <div className={s.statValue}>{attack}</div>
+            <div className={s.statValue}>{stats.attack}</div>
             Attack
           </div>
           <div className={s.statItem}>
-            <div className={s.statValue}>{defense}</div>
+            <div className={s.statValue}>{stats.defense}</div>
             Defense
           </div>
         </div>
