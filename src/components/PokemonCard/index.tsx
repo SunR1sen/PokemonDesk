@@ -33,6 +33,24 @@ const PokemonCard: React.FC<PokemonRequest> = ({ stats, name, types, img: imageS
     }
   };
 
+  const selectLabelBg = (type: string) => {
+    switch (type) {
+      case PokemonElements.grass:
+      case PokemonElements.bug:
+        return s.grass;
+
+      case PokemonElements.fire:
+        return s.fire;
+
+      case PokemonElements.water:
+      case PokemonElements.flying:
+        return s.water;
+
+      case PokemonElements.poison:
+        return s.poison;
+    }
+  };
+
   return (
     <A href={`${LinkEnum.POKEDEX}/${id}`}>
       <div className={s.root}>
@@ -52,7 +70,7 @@ const PokemonCard: React.FC<PokemonRequest> = ({ stats, name, types, img: imageS
           </div>
           <div className={s.labelWrap}>
             {types.map((type) => (
-              <span key={type} className={cn(s.label, s[type as keyof typeof s])}>
+              <span key={type} className={cn(s.label, selectLabelBg(type))}>
                 {type}
               </span>
             ))}
