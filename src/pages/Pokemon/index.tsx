@@ -1,18 +1,31 @@
-import React, {useEffect} from 'react';
-import useData from "../../hook/getData";
-import {Endpoints} from "../../config";
+import React, { useEffect } from 'react';
+import useData from '../../hook/getData';
+import { Endpoints } from '../../config';
+import {PokemonRequest} from "../../interfaces/pokemons";
 
 export type PokemonProps = {
   id: number | string;
-  name: string;
 };
 
-const Pokemon = ({ id, name }: PokemonProps) => {
+type DataType = {
+  data?: PokemonRequest | null;
+  isLoading: boolean;
+  isError: boolean;
+}
 
-  const { data, isLoading, isError } = useData(Endpoints.GetPokemon, { id: id })
-  console.log(data);
+const Pokemon = ({ id }: PokemonProps) => {
+  const { data, isLoading, isError }: DataType = useData(Endpoints.GetPokemonById, {}, [], { id });
 
-  return <div>This is pokemon id equals to {id} name: {name}</div>;
+  if (isError) {
+    return <div>!!!SOMETHING GONE WRONG!!!</div>;
+  }
+
+
+  return (
+    <div>
+      This is pokemon id equals to {id} name: {data?.name}
+    </div>
+  );
 };
 
 export default Pokemon;
