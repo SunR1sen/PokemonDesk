@@ -4,53 +4,12 @@ import { A } from 'hookrouter';
 import Heading, { HeadingTypes } from '../Heading';
 
 import s from './PokemonCard.module.scss';
+import commonS from '../../common/CommonPokemonStyles.module.scss';
 import { LinkEnum } from '../../routes';
 import { PokemonRequest } from '../../interfaces/pokemons';
-
-enum PokemonElements {
-  grass = 'grass',
-  poison = 'poison',
-  fire = 'fire',
-  flying = 'flying',
-  water = 'water',
-  bug = 'bug',
-}
+import { selectImageBg, selectLabelBg } from '../../utils/selectCommonStyles';
 
 const PokemonCard: React.FC<PokemonRequest> = ({ stats, name, types, img: imageSrc, id }) => {
-  const selectImageBg = (type: string) => {
-    switch (type) {
-      case PokemonElements.grass:
-      case PokemonElements.poison:
-      case PokemonElements.bug:
-        return s.grassBg;
-
-      case PokemonElements.fire:
-        return s.fireBg;
-
-      case PokemonElements.water:
-      case PokemonElements.flying:
-        return s.waterBg;
-    }
-  };
-
-  const selectLabelBg = (type: string) => {
-    switch (type) {
-      case PokemonElements.grass:
-      case PokemonElements.bug:
-        return s.grass;
-
-      case PokemonElements.fire:
-        return s.fire;
-
-      case PokemonElements.water:
-      case PokemonElements.flying:
-        return s.water;
-
-      case PokemonElements.poison:
-        return s.poison;
-    }
-  };
-
   return (
     <A href={`${LinkEnum.POKEDEX}/${id}`}>
       <div className={s.root}>
@@ -68,9 +27,9 @@ const PokemonCard: React.FC<PokemonRequest> = ({ stats, name, types, img: imageS
               Defense
             </div>
           </div>
-          <div className={s.labelWrap}>
+          <div className={commonS.labelWrap}>
             {types.map((type) => (
-              <span key={type} className={cn(s.label, selectLabelBg(type))}>
+              <span key={type} className={cn(commonS.label, selectLabelBg(type))}>
                 {type}
               </span>
             ))}
