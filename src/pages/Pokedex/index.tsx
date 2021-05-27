@@ -59,7 +59,7 @@ const Pokedex: React.FC = () => {
 
       <Layout className={s.cardsWrap}>
         {data?.pokemons.map((pokemon) => (
-          <PokemonCard {...pokemon} />
+          <PokemonCard {...pokemon} key={pokemon.id} />
         ))}
       </Layout>
       <Footer className={s.footer} />
