@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { A } from 'hookrouter';
 import PokemonCard from '../../components/PokemonCard';
 
 import s from './Pokedex.module.scss';
@@ -9,6 +10,7 @@ import { Endpoints } from '../../config';
 import useData from '../../hook/getData';
 import useDebounce from '../../hook/useDebounce';
 import { PokemonRequest } from '../../interfaces/pokemons';
+import { LinkEnum } from '../../routes';
 
 export type DataType = {
   total: number;
@@ -59,7 +61,9 @@ const Pokedex: React.FC = () => {
 
       <Layout className={s.cardsWrap}>
         {data?.pokemons.map((pokemon) => (
-          <PokemonCard {...pokemon} key={pokemon.id} />
+          <A href={`${LinkEnum.POKEDEX}/${pokemon.id}`}>
+            <PokemonCard {...pokemon} key={pokemon.id} />
+          </A>
         ))}
       </Layout>
       <Footer className={s.footer} />
