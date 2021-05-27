@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PokemonCard, { IPokemon } from '../../components/PokemonCard';
+import PokemonCard from '../../components/PokemonCard';
 
 import s from './Pokedex.module.scss';
 import Layout from '../../components/Layout';
@@ -8,12 +8,13 @@ import Heading, { HeadingTypes } from '../../components/Heading';
 import { Endpoints } from '../../config';
 import useData from '../../hook/getData';
 import useDebounce from '../../hook/useDebounce';
+import { PokemonRequest } from '../../interfaces/pokemons';
 
 export type DataType = {
   total: number;
   limit: number;
   offset: number;
-  pokemons: Array<IPokemon>;
+  pokemons: Array<PokemonRequest>;
 };
 
 type UseDataTypes = {
@@ -49,18 +50,16 @@ const Pokedex: React.FC = () => {
       <Heading className={s.title} type={HeadingTypes.h2}>
         {!isLoading && data?.total} <b>Pokemons</b> to you for choosing your favorite!
       </Heading>
-      <input placeholder="Начните вводить имя покемона..." className={s.searchInput} value={searchValue} onChange={handleSearchInput} />
+      <input
+        placeholder="Начните вводить имя покемона..."
+        className={s.searchInput}
+        value={searchValue}
+        onChange={handleSearchInput}
+      />
 
       <Layout className={s.cardsWrap}>
-        {data?.pokemons.map((poke: IPokemon) => (
-          <PokemonCard
-            name={poke.name}
-            stats={poke.stats}
-            types={poke.types}
-            img={poke.img}
-            id={poke.id}
-            key={poke.id}
-          />
+        {data?.pokemons.map((pokemon) => (
+          <PokemonCard {...pokemon} />
         ))}
       </Layout>
       <Footer className={s.footer} />

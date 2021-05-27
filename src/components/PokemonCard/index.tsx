@@ -1,29 +1,22 @@
 import React from 'react';
-import cn from "classnames";
+import cn from 'classnames';
 import { A } from 'hookrouter';
 import Heading, { HeadingTypes } from '../Heading';
 
 import s from './PokemonCard.module.scss';
-import {LinkEnum} from "../../routes";
-
-export interface IPokemon {
-  name: string;
-  stats: { [key: string]: number };
-  types: Array<string>;
-  img: string;
-  id: number;
-}
+import { LinkEnum } from '../../routes';
+import { PokemonRequest } from '../../interfaces/pokemons';
 
 enum PokemonElements {
-  grass = "grass",
-  poison = "poison",
-  fire = "fire",
-  flying = "flying",
-  water = "water",
-  bug = "bug"
+  grass = 'grass',
+  poison = 'poison',
+  fire = 'fire',
+  flying = 'flying',
+  water = 'water',
+  bug = 'bug',
 }
 
-const PokemonCard: React.FC<IPokemon> = ({ stats, name, types, img : imageSrc, id }) => {
+const PokemonCard: React.FC<PokemonRequest> = ({ stats, name, types, img: imageSrc, id }) => {
   const selectImageBg = (type: string) => {
     switch (type) {
       case PokemonElements.grass:
@@ -36,42 +29,40 @@ const PokemonCard: React.FC<IPokemon> = ({ stats, name, types, img : imageSrc, i
 
       case PokemonElements.water:
       case PokemonElements.flying:
-        return s.waterBg
+        return s.waterBg;
     }
-  }
+  };
 
   return (
-      <A href={`${LinkEnum.POKEDEX}/${id}`}>
-        <div className={s.root}>
-          <div className={s.infoWrap}>
-            <Heading type={HeadingTypes.Paragraph} className={s.titleName}>
-              {name}
-            </Heading>
-            <div className={s.statWrap}>
-              <div className={s.statItem}>
-                <div className={s.statValue}>{stats.attack}</div>
-                Attack
-              </div>
-              <div className={s.statItem}>
-                <div className={s.statValue}>{stats.defense}</div>
-                Defense
-              </div>
+    <A href={`${LinkEnum.POKEDEX}/${id}`}>
+      <div className={s.root}>
+        <div className={s.infoWrap}>
+          <Heading type={HeadingTypes.Paragraph} className={s.titleName}>
+            {name}
+          </Heading>
+          <div className={s.statWrap}>
+            <div className={s.statItem}>
+              <div className={s.statValue}>{stats.attack}</div>
+              Attack
             </div>
-            <div className={s.labelWrap}>
-              {types.map((type) => (
-                  <span key={type} className={cn(s.label, s[type as keyof typeof s])}>{type}</span>
-              ))}
+            <div className={s.statItem}>
+              <div className={s.statValue}>{stats.defense}</div>
+              Defense
             </div>
           </div>
-          <div className={cn(s.pictureWrap, selectImageBg(types[0]))}>
-            <img
-                src={imageSrc}
-                alt={name}
-            />
+          <div className={s.labelWrap}>
+            {types.map((type) => (
+              <span key={type} className={cn(s.label, s[type as keyof typeof s])}>
+                {type}
+              </span>
+            ))}
           </div>
         </div>
-
-      </A>
+        <div className={cn(s.pictureWrap, selectImageBg(types[0]))}>
+          <img src={imageSrc} alt={name} />
+        </div>
+      </div>
+    </A>
   );
 };
 
