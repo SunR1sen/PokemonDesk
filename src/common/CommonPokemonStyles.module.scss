@@ -1,0 +1,58 @@
+@import '../variables';
+
+.fireLabel {
+  background: $fire;
+}
+
+.poisonLabel {
+  background: $poison;
+}
+
+.grassLabel {
+  background: $grass;
+}
+
+.waterLabel {
+  background: $water;
+}
+
+.grassBg {
+  background: $greenGradient;
+}
+
+.fireBg {
+  background: $redGradient;
+}
+
+.waterBg {
+  background: $blueGradient;
+}
+
+.label {
+  box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
+  border-radius: 11px;
+  height: 15px;
+  min-width: 60px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  color: #212121;
+  padding: 0 12px 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+  text-transform: capitalize;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.labelWrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
