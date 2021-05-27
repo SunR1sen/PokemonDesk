@@ -1,10 +1,3 @@
-
-interface IPokemon {
-  [key: string]: string| number | boolean | Array<string> | object,
-}
-
-// не дошло до меня как правильно типизировать подобную штуку(
-
 const pokemons = [
   {
     "name_clean": "bulbasaur",
