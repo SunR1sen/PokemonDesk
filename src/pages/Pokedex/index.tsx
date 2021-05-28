@@ -61,7 +61,7 @@ const Pokedex: React.FC = () => {
 
       <Layout className={s.cardsWrap}>
         {data?.pokemons.map((pokemon) => (
-          <A href={`${LinkEnum.POKEDEX}/${pokemon.id}`}>
+          <A className={s.link} href={`${LinkEnum.POKEDEX}/${pokemon.id}`}>
             <PokemonCard {...pokemon} key={pokemon.id} />
           </A>
         ))}

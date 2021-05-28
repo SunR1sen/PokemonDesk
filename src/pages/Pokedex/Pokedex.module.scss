@@ -52,3 +52,15 @@
   line-height: 20px;
   outline: none;
 }
+
+.link:link {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+}
+
+.link:visited {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+}
