@@ -1,0 +1,194 @@
+@import '../../variables';
+
+.root {
+  display: flex;
+  max-width: 800px;
+  width: 100%;
+  height: 370px;
+  justify-content: flex-start;
+  background: $redGradient;
+  border-radius: 16px;
+  margin: 20px;
+}
+
+.leftSide {
+  position: relative;
+
+  .image {
+    max-width: 350px;
+  }
+
+  .labelsPosition {
+    position: absolute;
+    right: 15px;
+    bottom: 16px;
+  }
+}
+
+.rightSide {
+  background: $darkRedGradient;
+  width: 100%;
+  padding: 30px 20px 25px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+
+  .titleWrap {
+    display: flex;
+    align-items: baseline;
+    position: relative;
+
+    .pokemonName {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 42px;
+      color: #FDFDFD;
+      text-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
+      text-transform: capitalize;
+      margin-right: 50px;
+    }
+
+    .generation {
+      font-family: Source Sans Pro, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 30px;
+      color: #FDFDFD;
+      margin-right: 8px;
+    }
+
+    .level {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-family: Karla, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      width: 41px;
+      height: 41px;
+      color: #000000;
+      background: #F2CB07;
+      border-radius: 50%;
+    }
+  }
+
+  .abilities {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 28px;
+    width: 264px;
+    height: 60px;
+
+    background: $whiteLight;
+    box-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
+    border-radius: 8px;
+
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+
+    .ability {
+      text-transform: capitalize;
+    }
+  }
+
+  .characterInfo {
+    display: flex;
+    height: 80px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    background: $whiteLight;
+    box-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
+    border-radius: 8px;
+
+    .infoItem {
+
+      .infoNumbers {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+      }
+
+      .progressBar {
+        height: 5px;
+        width: 168px;
+        background: $gray;
+        position: relative;
+        border-radius: 8px;
+      }
+
+      .progress {
+        position: absolute;
+        height: 5px;
+        max-width: 168px;
+        width: 40%;
+        left: 0;
+        border-radius: 8px;
+      }
+
+      .healthBar {
+        background: $greenGradient;
+      }
+
+      .expBar {
+        background: $yellowGradient;
+      }
+
+    }
+  }
+
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .statItem {
+    max-width: 82px;
+    width: 100%;
+    background: #FDFDFD;
+    box-shadow: 4px 4px 24px rgba(1, 17, 38, 0.2);
+    border-radius: 8px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+
+    .statType {
+      text-align: center;
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    .statValue {
+      width: 36px;
+      height: 36px;
+      border: 3px solid #212121;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 18px;
+      color: #212121;
+      margin: 0 auto 8px;
+    }
+  }
+}
+
+
+
