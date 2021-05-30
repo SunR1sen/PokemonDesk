@@ -1,17 +1,24 @@
 import config, { Endpoints } from '../config';
 
-function getUrlWithParamsConfig(endPointConfig: Endpoints, query: object, params?: any) {
-  let { pathname } = config.client.endpoint[endPointConfig as keyof typeof config.client.endpoint].uri;
-  if (params?.id) {
-    pathname += params.id;
-  }
-
+function getUrlWithParamsConfig(endPointConfig: Endpoints, query: any) {
   const url = {
     ...config.client.server,
-    pathname,
-    query: { ...query },
+    ...config.client.endpoint[endPointConfig as keyof typeof config.client.endpoint].uri,
+    query: {},
   };
 
+  const pathname = Object.keys(query).reduce((acc, val) => {
+    if (acc.indexOf(`{${val}}`) !== -1) {
+      const result = acc.replace(`{${val}}`, query[val]);
+      delete query[val];
+      return result;
+    }
+    return acc;
+  }, url.pathname);
+
+  url.pathname = pathname;
+  url.query = { ...query };
+  
   return url;
 }
 
