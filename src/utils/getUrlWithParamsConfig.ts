@@ -1,25 +1,57 @@
 import config, { Endpoints } from '../config';
 
-function getUrlWithParamsConfig(endPointConfig: Endpoints, query: any) {
-  const url = {
+interface IApiConfigUri {
+  host: string,
+  protocol: string,
+  pathname: string,
+  query: object,
+}
+
+interface IEndpoint {
+  method: string,
+  uri: {
+    pathname: string,
+    query?: object,
+  }
+}
+
+function getUrlWithParamsConfig(endPointConfig: Endpoints, params: object) {
+  const { method, uri }: IEndpoint = config.client.endpoint[endPointConfig as keyof typeof config.client.endpoint];
+  let body = {};
+
+  const apiConfigUri: IApiConfigUri = {
     ...config.client.server,
-    ...config.client.endpoint[endPointConfig as keyof typeof config.client.endpoint].uri,
-    query: {},
+    ...uri,
+    query: {
+      ...uri.query,
+    }
   };
+
+  const query = {
+    ...params,
+  }
 
   const pathname = Object.keys(query).reduce((acc, val) => {
     if (acc.indexOf(`{${val}}`) !== -1) {
-      const result = acc.replace(`{${val}}`, query[val]);
-      delete query[val];
+      const result = acc.replace(`{${val}}`, query[val as keyof typeof query]);
+      delete query[val as keyof typeof query];
       return result;
     }
     return acc;
-  }, url.pathname);
+  }, apiConfigUri.pathname);
 
-  url.pathname = pathname;
-  url.query = { ...query };
+  apiConfigUri.pathname = pathname;
+
+  if (method === 'GET') {
+    apiConfigUri.query = {
+      ...apiConfigUri.query,
+      ...query,
+    }
+  } else {
+    body = query;
+  }
   
-  return url;
+  return { method, uri: apiConfigUri, body };
 }
 
 export default getUrlWithParamsConfig;
