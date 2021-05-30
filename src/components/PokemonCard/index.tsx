@@ -1,43 +1,13 @@
 import React from 'react';
-import cn from "classnames";
+import cn from 'classnames';
 import Heading, { HeadingTypes } from '../Heading';
 
 import s from './PokemonCard.module.scss';
+import commonS from '../../common/CommonPokemonStyles.module.scss';
+import { PokemonRequest } from '../../interfaces/pokemons';
+import { selectImageBg, selectLabelBg } from '../../utils/selectCommonStyles';
 
-export interface IPokemon {
-  name: string;
-  stats: { [key: string]: number };
-  types: Array<string>;
-  img: string;
-  id?: number;
-}
-
-enum PokemonElements {
-  grass = "grass",
-  poison = "poison",
-  fire = "fire",
-  flying = "flying",
-  water = "water",
-  bug = "bug"
-}
-
-const PokemonCard: React.FC<IPokemon> = ({ stats, name, types, img : imageSrc }) => {
-  const selectImageBg = (type: string) => {
-    switch (type) {
-      case PokemonElements.grass:
-      case PokemonElements.poison:
-      case PokemonElements.bug:
-        return s.grassBg;
-
-      case PokemonElements.fire:
-        return s.fireBg;
-
-      case PokemonElements.water:
-      case PokemonElements.flying:
-        return s.waterBg
-    }
-  }
-
+const PokemonCard: React.FC<PokemonRequest> = ({ stats, name, types, img: imageSrc}) => {
   return (
     <div className={s.root}>
       <div className={s.infoWrap}>
@@ -54,17 +24,16 @@ const PokemonCard: React.FC<IPokemon> = ({ stats, name, types, img : imageSrc })
             Defense
           </div>
         </div>
-        <div className={s.labelWrap}>
+        <div className={commonS.labelWrap}>
           {types.map((type) => (
-            <span key={type} className={cn(s.label, s[type as keyof typeof s])}>{type}</span>
+            <span key={type} className={cn(commonS.label, selectLabelBg(type))}>
+              {type}
+            </span>
           ))}
         </div>
       </div>
       <div className={cn(s.pictureWrap, selectImageBg(types[0]))}>
-        <img
-          src={imageSrc}
-          alt={name}
-        />
+        <img src={imageSrc} alt={name} />
       </div>
     </div>
   );

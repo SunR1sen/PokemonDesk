@@ -1,7 +1,7 @@
 const config = {
   client: {
     server: {
-      protocol: 'https',
+      protocol: 'http',
       host: 'zar.hosthot.ru',
     },
     endpoint: {
@@ -11,12 +11,19 @@ const config = {
           pathname: '/api/v1/pokemons',
         },
       },
+      getPokemonById: {
+        method: 'GET',
+        uri: {
+          pathname: '/api/v1/pokemon/',
+        },
+      },
     },
   },
 };
 
 export enum Endpoints {
-  GetPokemons = "getPokemons"
+  GetPokemons = 'getPokemons',
+  GetPokemonById = 'getPokemonById',
 }
 
 export default config;

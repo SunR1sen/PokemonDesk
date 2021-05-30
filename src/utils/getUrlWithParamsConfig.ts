@@ -1,12 +1,18 @@
-import config from "../config";
+import config, { Endpoints } from '../config';
 
-function getUrlWithParamsConfig(endPointConfig: keyof typeof config.client.endpoint) {
-    const url = {
-        ...config.client.server,
-        ...config.client.endpoint[endPointConfig].uri,
-    }
+function getUrlWithParamsConfig(endPointConfig: Endpoints, query: object, params?: any) {
+  let { pathname } = config.client.endpoint[endPointConfig as keyof typeof config.client.endpoint].uri;
+  if (params?.id) {
+    pathname += params.id;
+  }
 
-    return url;
+  const url = {
+    ...config.client.server,
+    pathname,
+    query: { ...query },
+  };
+
+  return url;
 }
 
 export default getUrlWithParamsConfig;
