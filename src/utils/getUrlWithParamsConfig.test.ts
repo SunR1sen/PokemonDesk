@@ -17,7 +17,7 @@ describe('getUrlWithParamsConfig', () => {
     })
   });
 
-    test("Должна принимать 2 аргумента 'getPokemon' и пустой объект, на выходе получить объект с полями pathname, protocol, host и query c полем name равным Pikachu", () => {
+    test("Должна принимать 2 аргумента 'getPokemon' и объект с полем name равным Pikachu, на выходе получить объект с полями pathname, protocol, host и query c полем name равным Pikachu", () => {
         const url = getUrlWithParamsConfig(Endpoints.GetPokemons, { name: 'Pikachu'});
 
         expect(url).toEqual({
