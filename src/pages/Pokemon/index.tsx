@@ -20,7 +20,7 @@ type DataType = {
 };
 
 const Pokemon = ({ id }: PokemonProps) => {
-  const { data: pokemon, isLoading, isError }: DataType = useData(Endpoints.GetPokemonById, {}, [], { id });
+  const { data: pokemon, isLoading, isError }: DataType = useData(Endpoints.GetPokemon, { id }, []);
 
   if (isError) {
     return <div>!!!SOMETHING GONE WRONG!!!</div>;

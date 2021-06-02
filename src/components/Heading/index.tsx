@@ -11,11 +11,11 @@ export enum HeadingTypes {
 }
 
 interface HeadingProps {
-  type: string;
+  type?: string;
   className?: string;
 }
 
-const Heading: React.FC<HeadingProps> = ({ type, className, children }) => {
+const Heading: React.FC<HeadingProps> = ({ type = HeadingTypes.h1, className, children }) => {
   return React.createElement(type, { className }, children);
 };
 

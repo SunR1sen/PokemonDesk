@@ -11,19 +11,38 @@ const config = {
           pathname: '/api/v1/pokemons',
         },
       },
-      getPokemonById: {
+      getPokemon: {
         method: 'GET',
         uri: {
-          pathname: '/api/v1/pokemon/',
+          pathname: '/api/v1/pokemon/{id}',
         },
       },
+      // FAKE API
+      createPokemon: {
+        method: 'POST',
+        uri: {
+          pathname: '/api/v1/pokemon/create',
+        }
+      },
+      updatePokemon: {
+        method: 'PATCH',
+        uri: {
+          pathname: '/api/v1/pokemon/{id}',
+        }
+      },
+      deletePokemon: {
+        method: 'DELETE',
+        uri: {
+          pathname: '/api/v1/pokemon/{id}/delete',
+        }
+      }
     },
   },
 };
 
 export enum Endpoints {
   GetPokemons = 'getPokemons',
-  GetPokemonById = 'getPokemonById',
+  GetPokemon = 'getPokemon',
 }
 
 export default config;
