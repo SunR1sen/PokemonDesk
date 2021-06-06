@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { A } from 'hookrouter';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PokemonCard from '../../components/PokemonCard';
 
 import s from './Pokedex.module.scss';
@@ -12,7 +12,7 @@ import useData from '../../hook/getData';
 import useDebounce from '../../hook/useDebounce';
 import { PokemonRequest } from '../../interfaces/pokemons';
 import { LinkEnum } from '../../routes';
-import { getTypesAction } from '../../store/pokemons';
+import { getPokemonsTypes, getPokemonsTypesLoading, getTypesAction } from '../../store/pokemons';
 
 export type DataType = {
   total: number;
@@ -33,6 +33,8 @@ const Pokedex: React.FC = () => {
     limit: 9,
   });
   const debouncedValue = useDebounce(searchValue, 500);
+  const types = useSelector(getPokemonsTypes);
+  const isTypesLoading = useSelector(getPokemonsTypesLoading);
   const dispatch = useDispatch();
 
   const { data, isLoading, isError }: UseDataTypes = useData(Endpoints.GetPokemons, query, [debouncedValue]);
@@ -66,6 +68,10 @@ const Pokedex: React.FC = () => {
         value={searchValue}
         onChange={handleSearchInput}
       />
+      <div>Типы покемонов:</div>
+      {
+        isTypesLoading ? <div>Грузится</div> : <select>{types?.map(item => <option>{item}</option>)}</select>
+      }
 
       <Layout className={s.cardsWrap}>
         {data?.pokemons.map((pokemon) => (
