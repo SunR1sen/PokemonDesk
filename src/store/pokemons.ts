@@ -9,6 +9,8 @@ interface TypesAction {
   payload?: string[];
 }
 
+type ActionTypes = TypesAction;
+
 const initialState = {
     types: {
         isLoading: false,
@@ -17,7 +19,7 @@ const initialState = {
     }
 }
 
-const pokemons = (state = initialState, action: TypesAction) => {
+const pokemons = (state = initialState, action: ActionTypes) => {
   switch (action.type) {
     case PokemonsActionTypes.FETCH_TYPES:
       return {
