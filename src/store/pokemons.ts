@@ -1,3 +1,14 @@
+export enum PokemonsActionTypes {
+  FETCH_TYPES = 'FETCH_TYPES',
+  FETCH_TYPES_RESOLVE = 'FETCH_TYPES_RESOLVE',
+  FETCH_TYPES_REJECT = 'FETCH_TYPES_REJECT',
+}
+
+interface TypesAction {
+  type: PokemonsActionTypes;
+  payload?: string[];
+}
+
 const initialState = {
     types: {
         isLoading: false,
@@ -6,9 +17,9 @@ const initialState = {
     }
 }
 
-const pokemons = (state = initialState, action: { type: string; payload: any }) => {
+const pokemons = (state = initialState, action: TypesAction) => {
   switch (action.type) {
-    case 'FETCH_TYPES':
+    case PokemonsActionTypes.FETCH_TYPES:
       return {
         ...state,
         types: {
@@ -18,7 +29,7 @@ const pokemons = (state = initialState, action: { type: string; payload: any }) 
         },
       };
 
-    case 'FETCH_TYPES_RESOLVE':
+    case PokemonsActionTypes.FETCH_TYPES_RESOLVE:
       return {
         ...state,
         types: {
@@ -28,7 +39,7 @@ const pokemons = (state = initialState, action: { type: string; payload: any }) 
         },
       };
 
-    case 'FETCH_TYPES_REJECT':
+    case PokemonsActionTypes.FETCH_TYPES_REJECT:
       return {
         ...state,
         types: {
