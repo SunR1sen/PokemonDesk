@@ -1,3 +1,8 @@
+import { Dispatch } from 'redux';
+import req from '../utils/request';
+import { Endpoints } from '../config';
+import { ITypesRequest } from '../interfaces/pokemons';
+
 export enum PokemonsActionTypes {
   FETCH_TYPES = 'FETCH_TYPES',
   FETCH_TYPES_RESOLVE = 'FETCH_TYPES_RESOLVE',
@@ -12,12 +17,12 @@ interface TypesAction {
 type ActionTypes = TypesAction;
 
 const initialState = {
-    types: {
-        isLoading: false,
-        data: null,
-        error: null,
-    }
-}
+  types: {
+    isLoading: false,
+    data: null,
+    error: null,
+  },
+};
 
 const pokemons = (state = initialState, action: ActionTypes) => {
   switch (action.type) {
@@ -54,6 +59,19 @@ const pokemons = (state = initialState, action: ActionTypes) => {
     default:
       return state;
   }
+};
+
+export const getTypesAction = () => {
+  return async (dispatch: Dispatch<ActionTypes>) => {
+    dispatch({ type: PokemonsActionTypes.FETCH_TYPES });
+    try {
+      const response = await req<ITypesRequest>(Endpoints.GetTypes);
+      console.log('#### res ', response);
+      dispatch({ type: PokemonsActionTypes.FETCH_TYPES_RESOLVE, payload: response });
+    } catch (error) {
+      dispatch({ type: PokemonsActionTypes.FETCH_TYPES_REJECT, payload: error });
+    }
+  };
 };
 
 export default pokemons;
