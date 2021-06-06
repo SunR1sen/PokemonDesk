@@ -4,7 +4,7 @@ interface IApiConfigUri {
   host: string,
   protocol: string,
   pathname: string,
-  query: object,
+  query?: object,
 }
 
 interface IEndpoint {
@@ -15,7 +15,7 @@ interface IEndpoint {
   }
 }
 
-function getUrlWithParamsConfig(endPointConfig: Endpoints, params: object) {
+function getUrlWithParamsConfig(endPointConfig: Endpoints, params: object | undefined) {
   const { method, uri }: IEndpoint = config.client.endpoint[endPointConfig as keyof typeof config.client.endpoint];
   let body = {};
 
