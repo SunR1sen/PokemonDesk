@@ -75,7 +75,6 @@ export const getTypesAction = () => {
     dispatch({ type: PokemonsActionTypes.FETCH_TYPES });
     try {
       const response = await req<ITypesRequest>(Endpoints.GetTypes);
-      console.log('#### res ', response);
       dispatch({ type: PokemonsActionTypes.FETCH_TYPES_RESOLVE, payload: response });
     } catch (error) {
       dispatch({ type: PokemonsActionTypes.FETCH_TYPES_REJECT, payload: error });
