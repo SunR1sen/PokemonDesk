@@ -27,3 +27,5 @@ const pokemon = {
 }
 
 export type PokemonRequest = typeof pokemon;
+
+export type ITypesRequest = string[];

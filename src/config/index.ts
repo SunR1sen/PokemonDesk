@@ -17,6 +17,12 @@ const config = {
           pathname: '/api/v1/pokemon/{id}',
         },
       },
+      getTypes: {
+        method: 'GET',
+        uri: {
+          pathname: '/api/v1/types',
+        }
+      },
       // FAKE API
       createPokemon: {
         method: 'POST',
@@ -43,6 +49,7 @@ const config = {
 export enum Endpoints {
   GetPokemons = 'getPokemons',
   GetPokemon = 'getPokemon',
+  GetTypes = 'getTypes',
 }
 
 export default config;
