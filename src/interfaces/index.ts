@@ -1,5 +1,5 @@
 export interface IStateRequest<T> {
     isLoading: boolean;
-    data: null | T[];
+    data: null | T;
     error: null | object;
 }
